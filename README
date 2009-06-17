@@ -1,10 +1,12 @@
 rails-less
 ==========
 
-Plugin for Rails to automatically generate css templates from less templates.
+Plugin for Rails to automatically generate css templates out of less templates.
 
 For this to work you need to have the less gem:
   sudo gem install less
+
+More documentation will follow.
 
 ==========
 
