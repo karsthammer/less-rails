@@ -48,6 +48,7 @@ module Less
 		def stylesheet_needs_update?(stylesheet)
 			relative_path = relative_path(stylesheet)
 
+			return true unless File.exist?(File.join(options[:css_location], relative_path + ".css"))
 			return File.ctime(stylesheet) > File.ctime(File.join(options[:css_location], relative_path + ".css"))
 		end
 
