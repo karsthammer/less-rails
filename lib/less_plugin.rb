@@ -32,4 +32,4 @@ module Less
 	end
 end
 
-require 'action_controller_patch'
+ActionController::Base.before_filter { Less::Plugin.update_stylesheets }
