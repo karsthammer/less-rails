@@ -10,7 +10,8 @@ module Less
 		@options = {
 			:css_location => "#{RAILS_ROOT}/public/stylesheets",
 			:template_location => "#{RAILS_ROOT}/app/stylesheets",
-			:update => :when_changed
+			:update => :when_changed, # Available are: :never, :when_changed and :always
+			:compress => false # Removes newlines from generated CSS
 		}
 
 		# Accessor for setting options from e.g. an initializer
@@ -41,7 +42,7 @@ module Less
 			File.unlink(File.join(options[:css_location], relative_path + ".css")) if File.exist?(File.join(options[:css_location], relative_path + ".css"))
 
 			# Generate the new stylesheet
-			Less::Command.new({:source => stylesheet, :destination => File.join(options[:css_location], relative_path + ".css")}).compile
+			Less::Command.new({:source => stylesheet, :destination => File.join(options[:css_location], relative_path + ".css"), :compress => options[:compress]}).compile
 		end
 
 		# Check if the specified stylesheet is in need of an update.
