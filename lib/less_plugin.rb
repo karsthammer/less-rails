@@ -42,7 +42,7 @@ module Less
 			File.unlink(File.join(options[:css_location], relative_path + ".css")) if File.exist?(File.join(options[:css_location], relative_path + ".css"))
 
 			# Generate the new stylesheet
-			Less::Command.new({:source => stylesheet, :destination => File.join(options[:css_location], relative_path + ".css"), :compress => options[:compress]}).compile
+			Less::Command.new({:source => stylesheet, :destination => File.join(options[:css_location], relative_path + ".css"), :compress => options[:compress]}).run!
 		end
 
 		# Check if the specified stylesheet is in need of an update.
