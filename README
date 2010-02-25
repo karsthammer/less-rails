@@ -9,6 +9,7 @@ For this to work you need to have the less gem:
 This plugin provides you with some configuration options that can be set in either an initializer or an environment file.
 The options can be set like this:
 
+Less::Plugin.options[:search_recursively] = "true"
 Less::Plugin.options[:template_location] = "#{RAILS_ROOT}/app/stylesheets"
 Less::Plugin.options[:css_location] = "#{RAILS_ROOT}/public/stylesheets"
 Less::Plugin.options[:update] = :when_changed
