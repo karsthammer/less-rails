@@ -19,7 +19,7 @@ A quick description of the options:
 
  * :template_location is the location where the *.less files are to be found.
  * :css_location is the location where the generated *.css files are to be put.
- * :search_recursively determines whether the plugin will include sub-directories in it's search, or not.
+ * :search_recursively determines whether the plugin will include sub-directories in it's search, or not. Non-recursive is preferred if your project uses multiple LESS @imports to generate a single CSS file.
  * :update defines when to update the *.css files, you have three options:
    * :never : never update the css files automatically.
    * :when_changed : update the css files when the corresponding less file is newer than the generated css file.
