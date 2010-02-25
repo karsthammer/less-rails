@@ -8,6 +8,7 @@ module Less
 
 		# Set default options
 		@options = {
+		  :search_recursively => :true,
 			:css_location => "#{RAILS_ROOT}/public/stylesheets",
 			:template_location => "#{RAILS_ROOT}/app/stylesheets",
 			:update => :when_changed, # Available are: :never, :when_changed and :always
@@ -18,14 +19,21 @@ module Less
 		def options=(opts)
 			@options.merge!(opts)
 		end
+		
+		# Determine how we're searching the file system 
+    def set_recursion
+      options[:search_recursively] = (options[:search_recursively] == :true) ? "**" : "/"
+    end
 
 		# Updates all stylesheets in the template_location and
 		# create corresponding files in the css_location.
 		def update_stylesheets
 			return if options[:update] == :never
 
+      set_recursion
+      
 			# Recursively loop through the directory specified in template_location.
-			Dir.glob(File.join(options[:template_location], '**', '*.less')).each do |stylesheet|
+			Dir.glob(File.join(options[:template_location], options[:search_recursively], '*.less')).each do |stylesheet|
 				# Update the current stylesheet if update is not :when_changed OR when the
 				# less-file is newer than the css-file.
 				update_stylesheet(stylesheet) if options[:update] != :when_changed || stylesheet_needs_update?(stylesheet)
