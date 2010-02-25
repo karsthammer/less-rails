@@ -10,7 +10,7 @@ module Less
 		@options = {
 			:css_location => "#{RAILS_ROOT}/public/stylesheets",
 			:template_location => "#{RAILS_ROOT}/app/stylesheets",
-		  :search_recursively => :true,
+		  :search_recursively => true,
 			:update => :when_changed, # Available are: :never, :when_changed and :always
 			:compress => false # Removes newlines from generated CSS
 		}
@@ -22,7 +22,7 @@ module Less
 		
 		# Determine how we're searching the file system 
     def set_recursion
-      options[:search_recursively] = (options[:search_recursively] == :true) ? "**" : "/"
+      options[:search_recursively] = options[:search_recursively] ? "**" : "/"
     end
 
 		# Updates all stylesheets in the template_location and
