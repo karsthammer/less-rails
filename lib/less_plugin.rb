@@ -8,9 +8,9 @@ module Less
 
 		# Set default options
 		@options = {
-		  :search_recursively => :true,
 			:css_location => "#{RAILS_ROOT}/public/stylesheets",
 			:template_location => "#{RAILS_ROOT}/app/stylesheets",
+		  :search_recursively => :true,
 			:update => :when_changed, # Available are: :never, :when_changed and :always
 			:compress => false # Removes newlines from generated CSS
 		}
